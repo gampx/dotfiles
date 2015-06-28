@@ -15,6 +15,7 @@ Plugin 'vhda/verilog_systemverilog.vim'
 let b:verilog_indent_modules = 1
 Plugin 'vim-jp/cpp-vim'
 Plugin 'elzr/vim-json'
+Plugin 'kien/ctrlp.vim'
 let g:vim_json_syntax_conceal = 0
 
 call vundle#end()            " required
