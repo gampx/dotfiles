@@ -14,8 +14,11 @@ Plugin 'gmarik/vundle'
 Plugin 'vhda/verilog_systemverilog.vim'
 let b:verilog_indent_modules = 1
 Plugin 'vim-jp/cpp-vim'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'elzr/vim-json'
 Plugin 'kien/ctrlp.vim'
+Plugin 'nachumk/systemverilog.vim'
+Plugin 'klen/python-mode'
 let g:vim_json_syntax_conceal = 0
 
 call vundle#end()            " required
@@ -140,7 +143,7 @@ set lbr
 set tw=500
 
 set ai "Auto indent
-"set si "Smart indent
+set si "Smart indent
 set wrap "Wrap lines
 
 set cino=N-s
