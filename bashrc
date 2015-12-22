@@ -88,6 +88,9 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -122,7 +125,8 @@ fi
 export EDITOR=vim
 export LC_ALL="en_US.UTF-8"
 
-# Setup Vivado environment(optional)
-if [ -f /opt/Xilinx/Vivado/2015.1/settings64.sh ]; then
-  source /opt/Xilinx/Vivado/2015.1/settings64.sh
-fi
+export PATH="~/.cabal/bin:/opt/cabal/head/bin:/opt/ghc/7.10.2/bin:$PATH"
+# CUDA
+export PATH=/usr/local/cuda-7.5/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
+alias sviv='source /opt/Xilinx/Vivado/2015.3/settings64.sh && vivado -nolog -nojournal' 

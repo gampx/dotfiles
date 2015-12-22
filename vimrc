@@ -18,12 +18,26 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'elzr/vim-json'
 Plugin 'kien/ctrlp.vim'
 Plugin 'nachumk/systemverilog.vim'
-Plugin 'klen/python-mode'
+
+
 let g:vim_json_syntax_conceal = 0
 
 call vundle#end()            " required
 filetype plugin indent on
 
+runtime macros/matchit.vim
+if exists("loaded_matchit")
+  let b:match_ignorecase=0
+  let b:match_words=
+        \ '\<begin\>:\<end\>,' .
+        \ '\<case\>\|\<casex\>\|\<casez\>:\<endcase\>,' .
+        \ '\<module\>:\<endmodule\>,' .
+        \ '\<if\>:\<else\>,' .
+        \ '\<function\>:\<endfunction\>,' .
+        \ '`ifdef\>:`else\>:`endif\>,' .
+        \ '\<task\>:\<endtask\>,' .
+        \ '\<specify\>:\<endspecify\>'
+endif
 
 " Insert a single char on 's'
 function! RepeatChar(char, count)
@@ -277,3 +291,5 @@ endfunction
 
 map <F5> <Esc>:w<CR>:make -j 1<CR><Enter>:copen<CR>
 map <F6> <Esc>:w<CR>:make -j 10<CR><Enter>:copen<CR>
+" Fast switch between cpp and h
+map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
