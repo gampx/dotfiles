@@ -11,6 +11,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/vundle'
 
+Plugin 'rust-lang/rust.vim'
 Plugin 'vhda/verilog_systemverilog.vim'
 let b:verilog_indent_modules = 1
 Plugin 'vim-jp/cpp-vim'
