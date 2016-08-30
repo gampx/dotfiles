@@ -12,13 +12,10 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 
 Plugin 'rust-lang/rust.vim'
-Plugin 'vhda/verilog_systemverilog.vim'
-let b:verilog_indent_modules = 1
 Plugin 'vim-jp/cpp-vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'elzr/vim-json'
 Plugin 'kien/ctrlp.vim'
-Plugin 'nachumk/systemverilog.vim'
 
 
 let g:vim_json_syntax_conceal = 0
@@ -290,7 +287,8 @@ endfunction
 " set colorcolumn=+1
 " hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 
-map <F5> <Esc>:w<CR>:make -j 1<CR><Enter>:copen<CR>
-map <F6> <Esc>:w<CR>:make -j 10<CR><Enter>:copen<CR>
+map <leader>m <Esc>:w<CR>:make -j 1<CR><Enter>:copen<CR>
+map <leader>mp <Esc>:w<CR>:make -j 10<CR><Enter>:copen<CR>
 " Fast switch between cpp and h
-map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+map <leader>g :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
