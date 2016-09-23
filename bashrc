@@ -125,8 +125,8 @@ fi
 export EDITOR=vim
 export LC_ALL="en_US.UTF-8"
 
-export PATH="~/.cabal/bin:/opt/cabal/head/bin:/opt/ghc/7.10.2/bin:$PATH"
-# CUDA
-export PATH=/usr/local/cuda-7.5/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
-alias sviv='source /opt/Xilinx/Vivado/2015.3/settings64.sh && vivado -nolog -nojournal' 
+alias chrome='chromium-browser --force-device-scale-factor=2'
+alias clion='/home/gamp/clion-2016.1/bin/clion.sh'
+
+# added by Anaconda2 4.0.0 installer
+export PATH="/home/gamp/anaconda2/bin:$PATH"

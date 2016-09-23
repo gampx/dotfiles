@@ -16,8 +16,9 @@ Plugin 'vim-jp/cpp-vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'elzr/vim-json'
 Plugin 'kien/ctrlp.vim'
+Plugin 'Valloric/YouCompleteMe'
 
-
+let g:ycm_autoclose_preview_window_after_completion = 1
 let g:vim_json_syntax_conceal = 0
 
 call vundle#end()            " required

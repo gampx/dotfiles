@@ -20,6 +20,7 @@ link_if_missing $DIR/gitconfig    $HOME/.gitconfig
 link_if_missing $DIR/vimrc        $HOME/.vimrc
 link_if_missing $DIR/bashrc       $HOME/.bashrc
 link_if_missing $DIR/bash_profile $HOME/.bash_profile
+link_if_missing $DIR/tmux.conf $HOME/.tmux.conf
 
 mkdir -p $HOME/.vim/undo
 vim +PluginInstall +qall
