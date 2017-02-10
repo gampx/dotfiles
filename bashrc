@@ -130,3 +130,9 @@ alias clion='/home/gamp/clion-2016.1/bin/clion.sh'
 
 # added by Anaconda2 4.0.0 installer
 export PATH="/home/gamp/anaconda2/bin:$PATH"
+
+find_and_replace() {
+  ag -l $1 | xargs perl -spi -E 's/$p1/$p2/g' -- -p1=$1 -p2=$2
+}
+
+alias agr=find_and_replace

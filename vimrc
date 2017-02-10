@@ -17,8 +17,8 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'elzr/vim-json'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'mileszs/ack.vim'
 
-let g:ycm_autoclose_preview_window_after_completion = 1
 let g:vim_json_syntax_conceal = 0
 
 call vundle#end()            " required
@@ -291,5 +291,18 @@ endfunction
 map <leader>m <Esc>:w<CR>:make -j 1<CR><Enter>:copen<CR>
 map <leader>mp <Esc>:w<CR>:make -j 10<CR><Enter>:copen<CR>
 " Fast switch between cpp and h
-map <leader>g :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+map <leader>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+map <leader>s <Esc>:%s/<c-r>"/
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => YouCompleteMe Plugin settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_autoclose_preview_window_after_completion = 1
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => clang-format 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>a :Ack <c-r>"<cr>
 

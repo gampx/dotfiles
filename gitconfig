@@ -13,6 +13,11 @@
   co = checkout
   ci = commit
   st = status --short
+	d = difftool
 [core]
   autocrlf = input
   safecrlf = true
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
