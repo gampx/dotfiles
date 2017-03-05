@@ -18,8 +18,15 @@ Plugin 'elzr/vim-json'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 let g:vim_json_syntax_conceal = 0
+"let g:airline_theme='powerlineish'
+"let g:airline_left_sep=''
+"let g:airline_right_sep=''
+"let g:airline_section_z=''
 
 call vundle#end()            " required
 filetype plugin indent on
@@ -288,12 +295,20 @@ endfunction
 " set colorcolumn=+1
 " hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 
-map <leader>m <Esc>:w<CR>:make -j 1<CR><Enter>:copen<CR>
-map <leader>mp <Esc>:w<CR>:make -j 10<CR><Enter>:copen<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Shortcuts 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap q :q<cr>
+map <leader>b <Esc>:w<CR>:make -j 20<CR><Enter>:copen<CR>
+
 " Fast switch between cpp and h
 map <leader>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-map <leader>s <Esc>:%s/<c-r>"/
+map <leader>r <Esc>:%s/<c-r>"/
 
+" Ag shortcuts
+map <leader>as :!ag <c-r>" ..<cr>
+map <leader>at :!ag <c-r>" ../..<cr>
+map <leader>aa :!ag <c-r>"  
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => YouCompleteMe Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -301,8 +316,4 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => clang-format 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>a :Ack <c-r>"<cr>
 
