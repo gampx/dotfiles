@@ -126,7 +126,6 @@ export EDITOR=vim
 export LC_ALL="en_US.UTF-8"
 
 alias chrome='chromium-browser --force-device-scale-factor=2'
-alias clion='/home/gamp/clion-2016.1/bin/clion.sh'
 
 # added by Anaconda2 4.0.0 installer
 export PATH="/home/gamp/anaconda2/bin:$PATH"

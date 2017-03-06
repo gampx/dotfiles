@@ -19,6 +19,7 @@ link_if_missing $DIR/vim          $HOME/.vim
 link_if_missing $DIR/gitconfig    $HOME/.gitconfig
 link_if_missing $DIR/vimrc        $HOME/.vimrc
 link_if_missing $DIR/bashrc       $HOME/.bashrc
+link_if_missing $DIR/zshrc       $HOME/.zshrc
 link_if_missing $DIR/bash_profile $HOME/.bash_profile
 link_if_missing $DIR/tmux.conf $HOME/.tmux.conf
 
