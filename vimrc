@@ -21,7 +21,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 
 call vundle#end()            " required
 filetype plugin indent on
@@ -313,7 +312,6 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Shortcuts 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap q :q<cr>
 map <leader>b <Esc>:w<CR>:make -j 20<CR><Enter>:copen<CR>
 
 " Fast switch between cpp and h
