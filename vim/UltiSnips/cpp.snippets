@@ -21,10 +21,6 @@ else if (${1:/* condition */}) {
 }
 endsnippet
 
-snippet printf "printf .. (printf)"
-printf("${1:%s}\n"${1/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$2${1/([^%]|%%)*(%.)?.*/(?2:\);)/}
-endsnippet
-
 snippet st "struct"
 struct ${1:`!p snip.rv = (snip.basename or "name") + "_t"`} {
 	${0:/* data */}
@@ -104,14 +100,6 @@ if (FILE *fp = fopen(${1:"filename"}, "r"))
 }
 endsnippet
 
-snippet map "std::map (map)"
-std::map<${1:key}, ${2:value}> map$0;
-endsnippet
-
-snippet vector "std::vector (v)"
-std::vector<${1:char}> v$0;
-endsnippet
-
 snippet tp "template <typename ..> (template)"
 template <typename ${1:_InputIter}>
 endsnippet
@@ -125,6 +113,10 @@ endsnippet
 # std::vector
 snippet vector
 std::vector<${1:T}> ${2};
+endsnippet
+# std::vector<std::string>
+snippet vecs
+std::vector<std::string> ${1};
 endsnippet
 # std::deque
 snippet deque
@@ -145,6 +137,10 @@ endsnippet
 # std::map
 snippet map
 std::map<${1:Key}, ${2:Value}> ${3};
+endsnippet
+# std::map<std::string, T>
+snippet maps
+std::map<std::string, ${1:Value}> ${2};
 endsnippet
 # std::multiset
 snippet mset
@@ -183,8 +179,8 @@ snippet pqueue
 std::priority_queue<${1:T}> ${2};
 endsnippet
 # std::string
-snippet string 
-std::string
+snippet string "std::string" !i
+std::string${1}
 endsnippet
 ##
 ## Input/Output
@@ -208,7 +204,7 @@ endsnippet
 ## Iteration
 # foreach
 snippet fore
-for (${1:auto} ${2:i} : ${3:container}) {
+for (${1:auto&} ${2:i} : ${3:container}) {
 	${4}
 }
 endsnippet
@@ -217,6 +213,16 @@ snippet iter
 for (auto ${1:i} = ${2:container}.begin(); $1 != $2.end(); ++$1) {
 	${3:std::cout << *$1 << std::endl;}
 }
+endsnippet
+##
+## Algorithms
+# sort
+snippet sort
+std::sort(${1:container}.begin(), $1.end());
+endsnippet
+# reverse 
+snippet reverse 
+std::reverse(${1:container}.begin(), $1.end());
 endsnippet
 ## Lambda
 # lambda (multi-line)
