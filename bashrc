@@ -127,11 +127,14 @@ export LC_ALL="en_US.UTF-8"
 
 alias chrome='chromium-browser --force-device-scale-factor=2'
 
-# added by Anaconda2 4.0.0 installer
-export PATH="/home/gamp/anaconda2/bin:$PATH"
-
 find_and_replace() {
   ag -l $1 | xargs perl -spi -E 's/$p1/$p2/g' -- -p1=$1 -p2=$2
 }
 
 alias agr=find_and_replace
+
+# added by Anaconda3 4.4.0 installer
+export PATH="/home/gamp/anaconda3/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export KUBECONFIG=$HOME/admin.conf

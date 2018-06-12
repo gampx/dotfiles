@@ -2,9 +2,9 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle
-"""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -14,22 +14,37 @@ Plugin 'gmarik/vundle'
 Plugin 'vim-jp/cpp-vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'elzr/vim-json'
-Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'SirVer/ultisnips'
+Plugin 'fatih/vim-go'
+Plugin 'idanarye/vim-dutyl'
+Plugin 'JesseKPhillips/d.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'junegunn/fzf'
 
 call vundle#end()            " required
 filetype plugin indent on
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => YouCompleteMe Plugin settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_confirm_extra_conf = 0
+
+nnoremap <C-g> :YcmCompleter GoToImprecise<CR>
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"let g:loaded_youcompleteme = 1
+let g:dutyl_stdImportPaths=['/usr/include/dmd/phobos']
 let g:vim_json_syntax_conceal = 0
-"let g:airline_theme='powerlineish'
-"let g:airline_left_sep=''
-"let g:airline_right_sep=''
-"let g:airline_section_z=''
+
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
@@ -39,6 +54,28 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" FZF
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+function! s:find_root()
+  for vcs in ['.git', '.svn', '.hg']
+    let dir = finddir(vcs.'/..', ';')
+    if !empty(dir)
+      execute 'FZF' dir
+      return
+    endif
+  endfor
+  FZF
+endfunction
+
+command! FZFR call s:find_root()
+nnoremap <C-p> :FZFR<CR>
+
+" Nerdtree settings
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
 set backspace=2
 runtime macros/matchit.vim
@@ -79,7 +116,7 @@ set autoread
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set relativenumber
+set colorcolumn=92
 set number
 
 " Set 7 lines to the cursor - when moving vertically using j/k
@@ -135,6 +172,8 @@ syntax enable
 
 colorscheme elflord
 set background=dark
+hi Conditional ctermfg=LightYellow
+hi Repeat ctermfg=LightYellow
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -180,7 +219,7 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-set cino=N-s
+set cino=N-s,g0,+2s,l-s,m1
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -315,21 +354,10 @@ endfunction
 map <leader>b <Esc>:w<CR>:make -j 20<CR><Enter>:copen<CR>
 
 " Fast switch between cpp and h
-map <leader>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+nnoremap <C-h> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 map <leader>r <Esc>:%s/<c-r>"/
 
 " Ag shortcuts
 map <leader>as :!ag <c-r>" ..<cr>
 map <leader>at :!ag <c-r>" ../..<cr>
 map <leader>aa :!ag <c-r>"  
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => YouCompleteMe Plugin settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_confirm_extra_conf = 0
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
